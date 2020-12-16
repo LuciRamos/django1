@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="card-deck">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-body">
+            <h4 class="card-title">Total de Clientes</h4>
+            <span class="card-text">{{cliente}}</span>
+          </div>
+        </div>
+        <div class="card text-white bg-secondary mb-3">
+          <div class="card-body">
+            <h4 class="card-title">Veiculos Alugados</h4>
+            <span class="card-text">{{veiculo}}</span>
+          </div>
+        </div>
+        <div class="card text-white bg-success mb-3">
+          <div class="card-body">
+            <h4 class="card-title">Total arrecadado</h4>
+            <span class="card-text">R$: {{total}}</span>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

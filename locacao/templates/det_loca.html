@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}Detalhes Locaçao{% endblock %}
+
+{%block content %}
+<br>
+<div class="container">
+    <form method="post">
+        {%csrf_token%}
+        <h5>Você está alugando o Veículo por {{dias}} dias</h5>
+        <h5>No valor de R${{valor}} </h5>
+        <button type="submit" class="btn btn-outline-success"> Concluir</button>
+        <a href="{%url 'update_loca' locacao.idlocacao %}" class="btn btn-outline-warning">Editar</a>
+        <a href="{%url 'delete_loca' locacao.idlocacao %}" class="btn btn-outline-danger">Cancelar</a>
+        
+    </form>
+    
+</div>
+
+
+
+{%endblock %}

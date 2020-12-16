@@ -1,0 +1,12 @@
+            <!--dropdown-->
+            <div class="btn-group">
+              <button type="button" class="btn btn-lg btn-orcamento dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                Cadastrar
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{% url 'cad_cli' %}">Cliente</a>
+                <a class="dropdown-item" href="{%url 'cad_vei'%}">Veículo</a>
+                <a class="dropdown-item" href="{% url 'cad_loca' %} ">Locação</a>
+                <a class="dropdown-item" href="#">Diária</a>
+              </div>
+            </div>

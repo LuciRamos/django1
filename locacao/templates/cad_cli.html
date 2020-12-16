@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}Cadastro de Cliente{% endblock %}
+
+{%block content %}
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            {% bootstrap_messages %}
+            <form action="{% url 'cad_cli'%}" method="post" class="form" autocomplete="off">      
+                {% csrf_token %}
+                {% bootstrap_form form %}    
+                <button type="submit" class="btn btn-outline-success"> Cadastrar </button>
+            </form>
+        </div>
+      </div>
+</div>
+{%endblock %}
+

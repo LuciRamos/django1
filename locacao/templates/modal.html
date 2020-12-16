@@ -1,0 +1,26 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!--Modal Cliente-->
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Editar de Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"></button>
+            <span aria-hidden="true">&times;</span>
+        </div>
+        <!--Corpo-->
+        <div class="modal-body">
+            {% bootstrap_messages %}
+            <form action="{% url 'edit_cli' clientes.idcliente%}" method="post" autocomplete="off">
+                {% csrf_token %}
+                {% bootstrap_form form %}   
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-success"> Salvar </button>
+            <button type="button" class="btn btn-outline-danger" data-dismiss="modal"> Cancelar </button>
+        </div>
+    </div>
+  </div>
+<!--end modal-->

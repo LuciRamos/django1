@@ -1,0 +1,104 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+     <!--Topo-->
+<div class="container-fluid bg-topo">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="{% url 'index' %}" class="navbar-brand">
+            <img src="{% static 'images/logo1.png' %}" height="60" class="d-inline-block align-top" >
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
+        aria-controls="menu" aria-expanded="false" aria-label="Menu Colapso">
+            <span class="navbar-toggler-icon text-light">
+            </span>
+        </button>
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto text-light">
+                {%if user.is_authenticated %}
+                <li id="inicio" class="nav-item">
+                  <a href="{% url 'index' %}" class="nav-link text-light font-weight-bold">Início</a>
+                </li>
+                <li id="inicio" class="nav-item">
+                  <a href="{% url 'painel' %}" class="nav-link text-light font-weight-bold">Painel</a>
+                </li>
+                <li id="clientes" class="nav-item">
+                    <a href="{% url 'cliente' %}" class="nav-link text-light font-weight-bold">Clientes</a>
+                </li>
+               <li id="veiculos" class="nav-item">
+                <a href="{% url 'veiculo' %}" class="nav-link text-light font-weight-bold">Veiculos</a>
+               </li>
+               <li id="locacao" class="nav-item">
+                <a href="{% url 'locacao' %}" class="nav-link text-light font-weight-bold">Locação</a>
+             </li>
+               {% else %}
+               <li id="inicio" class="nav-item">
+                <a href="{% url 'index' %}" class="nav-link text-light font-weight-bold">Início</a>
+              </li>
+                <li id="veiculos" class="nav-item">
+                    <a href="{% url 'veiculo' %}" class="nav-link text-light font-weight-bold">Veiculos</a>
+                </li>
+                {% endif %}
+              </ul>
+              <!--dropdown-->
+            {%if user.is_authenticated %}
+            <div class="btn-group">
+              <button type="button" class="btn  btn-orcamento dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                Cadastrar
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{% url 'cad_cli' %}">Cliente</a>
+                <a class="dropdown-item" href="{%url 'cad_vei'%}">Veículo</a>
+                <a class="dropdown-item" href="{% url 'cad_loca' %} ">Locação</a>
+                <a class="dropdown-item" href="#">Diária</a>
+              </div>
+            </div>
+            <div class="btn">
+              <a href="/accounts/logout" class="btn btn-orcamento" aria-haspopup="true" aria-expanded="false" >
+                Sair
+              </a>
+
+            {% else %}
+            <div class="btn"> 
+              <a href="{%url 'login' %}" class="btn btn-orcamento" aria-haspopup="true" aria-expanded="false" >
+                Entrar
+              </a>
+            {% endif %}
+              
+            </div>
+        </div>
+    </nav>
+  </div>
+</div>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.mask.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mascara.js' %}"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    {%block extrajs %}
+    {%endblock extrajs %}
+  </body>
+</html>

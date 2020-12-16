@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cliente{% endblock %}
+
+{%block content %}
+<br>
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header">Lista de Clientes </h5>
+            <div class="card-body">
+                <table id="teste" class="table">
+                    <thead class="thead-light">
+                        <tr >
+                            <th scope="col">Nome</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Cidade</th>
+                            <th scope="col">Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for clientes in cliente %}
+                        <tr >
+                            <td > {{clientes.nomecompleto}} </td>
+                            <td > {{clientes.idade}} </td>
+                            <td > {{clientes.sexo}} </td>
+                            <td  >{{clientes.cidade}}  </td>
+                            <td > <button  onclick="abri_modal_edition('{%url 'edit_cli' clientes.idcliente %}')" class="btn btn-outline-warning">Editar</button> <a href="{%url 'del_cli' clientes.idcliente %}" class="btn btn-outline-danger">Excluir</a></td>
+                            
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+        
+                </table>
+            </div>
+          </div>
+    </div>
+
+    <div class="modal fade" id="adicion" role="dialog">
+
+    </div>
+    
+{%endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+    var $ = jQuery.noConflict();
+    function abri_modal_edition(url){
+        $('#adicion').load(url,function(){
+            $(this).modal('show');
+        });
+    }
+</script>
+
+{%endblock extrajs %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Apagar Locaçao{% endblock %}
+
+{%block content %}
+<br>
+<div class="container">
+    <form method="post">
+        {%csrf_token%}
+        <h5>Você tem certeza que quer excluir?</h5>
+        <button type="submit" class="btn btn-outline-danger"> Excluir</button>
+        <a href="{%url 'locacao'%}" class="btn btn-outline-warning">Cancelar</a>
+    </form>
+</div>
+
+{%endblock %}

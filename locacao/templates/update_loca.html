@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}Editar Locaçao{% endblock %}
+
+{%block content %}
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            {% bootstrap_messages %}
+            <form action="{% url 'update_loca' locacao.idlocacao%}" method="post" class="form" autocomplete="off">      
+                {% csrf_token %}
+                {% bootstrap_form form %}         
+                <button type="submit" class="btn btn-outline-success"> Salvar </button>
+            </form>
+        </div>
+      </div>
+</div>
+{%endblock %}

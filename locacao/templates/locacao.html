@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Locação{% endblock %}
+
+{%block content %}
+    <br>
+    <div class="container">
+        <div class="card">
+            <h5 class="card-header">Lista de Locações </h5>
+            <div class="card-body">
+                <table id="teste" class="table">
+                    <thead class="thead-light">
+                        <tr >
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Veículo</th>
+                            <th scope="col">Data da locação</th>
+                            <th scope="col">Data Prevista Devolução</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Opções</th>
+                            
+
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for locacao in locacao %}
+                        <tr >
+                            <td > {{locacao.cliente}} </td>
+                            <td > {{locacao.veiculo}} </td>
+                            <td > {{locacao.datalocacao}} </td>
+                            <td > {{locacao.datadevolucao}} </td>
+                            {%if locacao.valortotal == null %}
+                            <td>R$ --</td>
+                            {%else %}
+                            <td>R$ {{locacao.valortotal}}</td>
+                            {%endif%}
+                            {%if locacao.valortotal == null %}
+                                <td > <a href="{%url 'det_loca' locacao.idlocacao %}" class="btn btn-outline-warning">Concluir</a></td>
+                            {%endif%}
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+        
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+{%endblock %}

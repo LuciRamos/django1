@@ -1,0 +1,24 @@
+<h1>Inicio</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Fabricante</th>
+            <th>Ano</th>
+            <th>Valor Diária</th>
+            <th>Quantidade</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for veiculo in veiculos %}
+        <tr>
+            <td> <a href="{% url 'veiculo' veiculo.idveiculo %}">{{veiculo.nome}}</a></td>
+            <td> {{veiculo.fabricante}} </td>
+            <td> {{veiculo.anoveiculo}} </td>
+            <td> {{veiculo.valordiaria}} </td>
+            <td> {{veiculo.quantidade}} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

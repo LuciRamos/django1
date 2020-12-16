@@ -1,0 +1,50 @@
+Locação
+create database locacao;
+psql -h localhost -U postgres locacao ;
+
+
+
+Clientes
+	#idCliente		serial
+	nomeCompleto		ch50	
+	cpf			ch15
+	cnh			int
+	idade			int
+	sexo			ch5
+	rg			ch20
+	rua
+	numero
+	complemento	
+	bairro
+	cidade
+
+create table clientes (idCliente serial primary key, nomeCompleto char(50), cpf char(15), num_cnh char(20), idade integer, sexo char(1), rg char(20)) ;
+
+Veiculo
+	#idVeiculo			serial
+	nome				ch45
+	fabricante			ch20
+	anoVeiculo			int
+	placa				ch8
+	tipoCombustivel    		ch15
+	capacidadeTanque		int
+	numeroChassi			ch18
+	valorDiaria			double
+	quantidade			int
+	disponivel			bool
+	
+create table veiculos (idVeiculo serial primary key, nome char(50),fabricante char(20), anoVeiculo integer, tipoCombustivel char(15), capacidadeTanque integer,
+numeroChassi char(18), valorDiaria decimal, quantidade integer);
+
+locacao
+	#idLocacao			serial
+	valorLocacao		int
+	dataLocacao			date
+	horarioLocacao		time	
+	dataDevolucao		date
+	horaDevolucao		time
+	cliente 		 	int @clintes
+	veiculo 			int @veiculos
+create table locacao (idLocacao serial primary key, dataLocacao date, horarioLocacao time, dataDevolucao date, horaDevolucao time,
+cliente integer references clientes(idCliente),veiculo integer references veiculos(idVeiculo),valorLocacao decimal );
+
